@@ -1,6 +1,8 @@
 # Dashboard Template
 
-Interactive React + Vite frontend mockup for an internal multi-user data & analytics portal (`iSearch — Search Portal`), built for rapid UI iteration and cross-device pickup.
+Interactive React + Vite frontend mockup for an internal multi-user data & analytics portal (`iSearch — Search Portal`), built as a modular **donor / spare-parts template** for rapid UI iteration, cross-device pickup, and selective component integration into real backends.
+
+> **Picking up or stripping components for another build?** Read **[`PICKUP_GUIDE.md`](./PICKUP_GUIDE.md)** for the complete module transplant matrix, CSS scoping map, and GCP / BigQuery data contracts.
 
 ## Features
 
