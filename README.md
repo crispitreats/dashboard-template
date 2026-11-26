@@ -1,4 +1,4 @@
-# iSearch — Search Portal (Frontend Mockup)
+# Dashboard Template
 
 Interactive React + Vite frontend mockup for an internal multi-user data & analytics portal (`iSearch — Search Portal`), built for rapid UI iteration and cross-device pickup.
 
