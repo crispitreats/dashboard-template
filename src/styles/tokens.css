@@ -1,0 +1,77 @@
+:root {
+  /* Typography */
+  --font-heading: 'Futura', 'Futura PT', 'Jost', 'Century Gothic', sans-serif;
+  --font-body: 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
+
+  /* Apple-inspired Palette */
+  --color-accent: #0071e3;
+  --color-accent-hover: #0077ed;
+  --color-accent-soft: rgba(0, 113, 227, 0.11);
+
+  --color-header-bg: #1d1d1f;
+  --color-header-border: #323236;
+  --color-header-text: #f5f5f7;
+  --color-header-muted: #a1a1a6;
+
+  --color-rail-bg: #ffffff;
+  --color-rail-border: #e5e5ea;
+  --color-rail-icon: #3a3a3c;
+  --color-rail-label: #6e6e73;
+  --color-rail-hover: #f2f2f7;
+  --color-rail-active-bg: var(--color-accent-soft);
+  --color-rail-active-fg: var(--color-accent);
+
+  --color-canvas-bg: #f5f5f7;
+  --color-surface-bg: #ffffff;
+  --color-surface-border: #e5e5ea;
+  --color-text-primary: #1d1d1f;
+  --color-text-secondary: #6e6e73;
+
+  /* Dimensions */
+  --header-height: 44px;
+  --rail-width: 52px;
+  --radius-sm: 7px;
+  --radius-md: 12px;
+  --transition-fast: 160ms ease;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-body);
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--color-text-primary);
+  background-color: var(--color-canvas-bg);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-heading);
+  margin: 0;
+  font-weight: 600;
+  letter-spacing: 0.025em;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+}
