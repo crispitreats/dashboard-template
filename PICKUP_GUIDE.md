@@ -17,6 +17,7 @@
   - `src/styles/landing.css` — Landing page (`.landing-*`).
   - `src/styles/datapane.css` — Data Pane workbench (`.dp-*`).
   - `src/styles/dmc.css` — SAP DMC Template Workbench (`.dmc-*`).
+  - `src/styles/dashboard.css` — Modular Supply Chain Control Tower Dashboard (`.sc-*`).
 
 ---
 
@@ -30,6 +31,7 @@
 | **D. Product Catalog Directory** | Searchable `Cards` / `List` catalog for any `(Team, Mode)` view | `src/components/ModeProductDirectory.jsx` | `.dir-*` in `app.css` | Reads `PRODUCT_CATALOG` + calls `onSelectProduct(groupId, itemId)` |
 | **E. Data Pane (BigQuery Workbench)** | Schema-driven sortable table, type-aware multi-select/range `+ Filter` builder, full-height resizable/collapsible 4-zone Pivot Fields (`Filters`, `Rows`, `Columns`, `Values`), Pivot Output (`Copy` TSV, `CSV`, Popup), Pivot Chart (`Bar`/`H-Bar`/`Line`/`Donut`, `Copy`, `PNG`, Popup) | `src/components/DataPane/*`<br>`src/utils/pivot.js` | `src/styles/datapane.css`<br>`:root` vars from `tokens.css` | **100% self-contained** — pass a single `dataset` prop |
 | **F. SAP DMC Template Workbench** | Linear 5-step sequential flow for **Material Master** and **PIR & Quota**, prominent Excel/CSV Grid Intake & Column Mapper, SAP Status Gantt (with 3-way PIR grain switcher & upstream Material prerequisite checks), centralized `SAP_DMC_FIELD_RULES` governance with strict forward blocking, column-level DB drag-down (`↓ All` / `↓ Empty`), targeted Select & Drag-and-Drop Plant Explosion, optional Valuation layer, and multi-sheet SAP SpreadsheetML `.xml` export | `src/components/DmcWorkbench/DmcWorkbench.jsx`<br>`src/components/DmcWorkbench/DmcGridIntake.jsx`<br>`src/components/DmcWorkbench/DmcGanttTable.jsx`<br>`src/components/DmcWorkbench/DmcXmlEditor.jsx`<br>`src/data/dmcData.js` | `src/styles/dmc.css`<br>`:root` vars from `tokens.css` | **100% self-contained** — pass `grain="material" \| "pir"` + optional `onSwitchGrain` |
+| **G. Supply Chain Control Tower Dashboard** | Non-scrolling viewport-locked modular 12-column Auto-Pack dashboard (`Dir → Dashboards`), full-bleed Google-Maps-style low-poly animated supply chain map with pan & zoom, Supply vs Demand + Buffer chart, Sourcing Donut, Plant Capacity bars, Lane SLA Watch, persistent Notepad + deterministic Summary Brief generator, draggable/dockable KPI cards, centered gutter snap-to-grid resize handles with 12-col reference overlay, bottom Component Dock, and individual + full-dashboard 2× PNG export | `src/components/SupplyDashboard/SupplyDashboard.jsx`<br>`src/components/SupplyDashboard/SupplyFlowMap.jsx`<br>`src/components/SupplyDashboard/exportUtils.js`<br>`src/data/supplyDashboardData.js` | `src/styles/dashboard.css`<br>`:root` vars from `tokens.css` | **100% self-contained** — swap `DASHBOARD_DATA_BY_FAMILY` & `MAP_LANES` for your API |
 
 ---
 

@@ -1,6 +1,7 @@
 import { useLayoutEffect, useMemo, useRef, useState } from 'react';
 import { DataPane } from './components/DataPane/DataPane';
 import { DmcWorkbench } from './components/DmcWorkbench/DmcWorkbench';
+import { SupplyDashboard } from './components/SupplyDashboard/SupplyDashboard';
 import { Header } from './components/Header';
 import { HomeLanding } from './components/HomeLanding';
 import { ModeProductDirectory } from './components/ModeProductDirectory';
@@ -155,13 +156,18 @@ export default function App() {
 
   const isDirectoryView = isProductView && !activeProduct;
   const isDataPane = isProductView && Boolean(activeProduct) && activeMode === 'data';
+  const isSupplyDashboard =
+    isProductView &&
+    Boolean(activeProduct) &&
+    activeNav === 'iphone' &&
+    activeMode === 'dashboards';
   const dmcGrain =
     isProductView && activeProduct?.id === 'dir-prep-dmc-material'
       ? 'material'
       : isProductView && activeProduct?.id === 'dir-prep-dmc-pir'
       ? 'pir'
       : null;
-  const isViewportLocked = isDataPane || Boolean(dmcGrain);
+  const isViewportLocked = isDataPane || Boolean(dmcGrain) || isSupplyDashboard;
 
   const workspaceTitle = activeProduct
     ? activeProduct.name
@@ -270,6 +276,8 @@ export default function App() {
                   modeId={activeMode}
                   onSelectProduct={handleSelectProduct}
                 />
+              ) : isSupplyDashboard ? (
+                <SupplyDashboard />
               ) : dmcGrain ? (
                 <DmcWorkbench
                   key={dmcGrain}
