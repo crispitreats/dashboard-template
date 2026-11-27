@@ -1,5 +1,6 @@
 import { useLayoutEffect, useMemo, useRef, useState } from 'react';
 import { DataPane } from './components/DataPane/DataPane';
+import { DmcWorkbench } from './components/DmcWorkbench/DmcWorkbench';
 import { Header } from './components/Header';
 import { HomeLanding } from './components/HomeLanding';
 import { ModeProductDirectory } from './components/ModeProductDirectory';
@@ -22,13 +23,13 @@ import { DEFAULT_ASSIGNED_ROLES } from './data/roles';
 const ALL_NAV_ITEMS = [...PRIMARY_NAV_ITEMS, ...BOTTOM_NAV_ITEMS];
 
 export default function App() {
-  const initialSelection = getDefaultSelection('iphone', 'data');
+  const initialSelection = getDefaultSelection('iphone', 'dashboards');
 
   const [activeNav, setActiveNav] = useState('home');
   // Remember last sidebar category so content stays visible while smoothly sliding closed
   const [lastSidebarCategory, setLastSidebarCategory] = useState('iphone');
   const [sidebarOpen, setSidebarOpen] = useState(false);
-  const [activeMode, setActiveMode] = useState('data');
+  const [activeMode, setActiveMode] = useState('dashboards');
   const [expandedGroups, setExpandedGroups] = useState(() =>
     initialSelection.groupId ? [initialSelection.groupId] : []
   );
@@ -154,6 +155,13 @@ export default function App() {
 
   const isDirectoryView = isProductView && !activeProduct;
   const isDataPane = isProductView && Boolean(activeProduct) && activeMode === 'data';
+  const dmcGrain =
+    isProductView && activeProduct?.id === 'dir-prep-dmc-material'
+      ? 'material'
+      : isProductView && activeProduct?.id === 'dir-prep-dmc-pir'
+      ? 'pir'
+      : null;
+  const isViewportLocked = isDataPane || Boolean(dmcGrain);
 
   const workspaceTitle = activeProduct
     ? activeProduct.name
@@ -205,7 +213,7 @@ export default function App() {
           handleTop={handleTop}
         />
 
-        <main className={`app-main ${isDataPane ? 'is-data-pane' : ''}`}>
+        <main className={`app-main ${isViewportLocked ? 'is-data-pane' : ''}`}>
           {isLandingView ? (
             <HomeLanding onNavigateTarget={handleNavigateTarget} />
           ) : (
@@ -261,6 +269,18 @@ export default function App() {
                   categoryId={activeNav}
                   modeId={activeMode}
                   onSelectProduct={handleSelectProduct}
+                />
+              ) : dmcGrain ? (
+                <DmcWorkbench
+                  key={dmcGrain}
+                  grain={dmcGrain}
+                  onSwitchGrain={(targetGrain) => {
+                    const targetId =
+                      targetGrain === 'pir'
+                        ? 'dir-prep-dmc-pir'
+                        : 'dir-prep-dmc-material';
+                    handleSelectProduct('dir-prep-dmc', targetId);
+                  }}
                 />
               ) : isDataPane && activeDataset ? (
                 <DataPane dataset={activeDataset} />

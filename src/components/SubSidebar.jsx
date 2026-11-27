@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { PRODUCT_CATALOG, SIDEBAR_MODES } from '../data/catalog';
 import { ModeProductIcon, RailToggleIcon } from './Icons';
 
@@ -14,6 +15,7 @@ export function SubSidebar({
   onToggle,
   handleTop = 10,
 }) {
+  const [hoveredModeId, setHoveredModeId] = useState(null);
   const category = PRODUCT_CATALOG[categoryId];
   const productGroups = category?.modes?.[activeMode] ?? [];
   const activeModeObj = SIDEBAR_MODES.find((m) => m.id === activeMode);
@@ -43,28 +45,40 @@ export function SubSidebar({
           </div>
 
           <div
-            className="sub-mode-selector"
-            role="tablist"
-            aria-label="Workspace mode"
+            className="sub-mode-wrap"
+            onMouseLeave={() => setHoveredModeId(null)}
           >
-            {SIDEBAR_MODES.map((mode) => {
-              const isActive = activeMode === mode.id;
-              return (
-                <button
-                  key={mode.id}
-                  type="button"
-                  role="tab"
-                  aria-selected={isActive}
-                  aria-label={mode.label}
-                  title={mode.label}
-                  tabIndex={visible && open ? 0 : -1}
-                  className={`sub-mode-btn ${isActive ? 'is-active' : ''}`}
-                  onClick={() => onSelectMode(mode.id)}
-                >
-                  <ModeProductIcon mode={mode.id} size={15} />
-                </button>
-              );
-            })}
+            <div
+              className="sub-mode-selector"
+              role="tablist"
+              aria-label="Workspace mode"
+            >
+              {SIDEBAR_MODES.map((mode) => {
+                const isActive = activeMode === mode.id;
+                return (
+                  <button
+                    key={mode.id}
+                    type="button"
+                    role="tab"
+                    aria-selected={isActive}
+                    aria-label={mode.label}
+                    tabIndex={visible && open ? 0 : -1}
+                    className={`sub-mode-btn ${isActive ? 'is-active' : ''}`}
+                    onMouseEnter={() => setHoveredModeId(mode.id)}
+                    onFocus={() => setHoveredModeId(mode.id)}
+                    onBlur={() => setHoveredModeId(null)}
+                    onClick={() => onSelectMode(mode.id)}
+                  >
+                    <ModeProductIcon mode={mode.id} size={15} />
+                    {hoveredModeId === mode.id && (
+                      <span className="sub-mode-tooltip" role="tooltip">
+                        {mode.label}
+                      </span>
+                    )}
+                  </button>
+                );
+              })}
+            </div>
           </div>
 
           <hr className="sub-sidebar-divider" />

@@ -302,11 +302,11 @@
   box-shadow: 0 2px 6px rgba(29, 29, 31, 0.2);
 }
 
-/* 3. Data, Analytics & Workbench Side-by-Side (Uniform-Height Scrollable Cards) */
+/* 3. Dashboards, Data, Analytics & Workbench Side-by-Side (Uniform-Height Scrollable Cards) */
 .landing-pillars-grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 16px;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 14px;
   align-items: stretch;
 }
 
@@ -529,13 +529,17 @@
 }
 
 /* Responsive */
-@media (max-width: 960px) {
+@media (max-width: 1120px) {
   .landing-pillars-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
 @media (max-width: 640px) {
+  .landing-pillars-grid {
+    grid-template-columns: 1fr;
+  }
+
   .landing-hero {
     height: 250px;
   }

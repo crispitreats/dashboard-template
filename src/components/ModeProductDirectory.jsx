@@ -7,6 +7,14 @@ function getResourceMeta(categoryTitle, modeId, itemId) {
   const ns = (categoryTitle || 'dir').toLowerCase();
   const slug = (itemId || 'dataset').replace(/-/g, '_');
 
+  if (modeId === 'dashboards') {
+    return {
+      source: `isearch://${ns}/dashboards/${slug}`,
+      status: 'Built-in Board',
+      freshness: 'Live refresh',
+      metric: 'Curated KPIs',
+    };
+  }
   if (modeId === 'data') {
     return {
       source: `apple-isearch.${ns}_data.${slug}`,

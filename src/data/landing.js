@@ -61,6 +61,7 @@ export const PROFILE_PILLS = [
 ];
 
 export const MODE_META = [
+  { id: 'dashboards', label: 'Dashboards', badge: 'Built-in', color: '#AF52DE', tint: 'rgba(175, 82, 222, 0.12)' },
   { id: 'data', label: 'Data', badge: 'BigQuery', color: '#0071E3', tint: 'rgba(0, 113, 227, 0.11)' },
   { id: 'analytics', label: 'Analytics', badge: 'Dashboards', color: '#34C759', tint: 'rgba(52, 199, 89, 0.12)' },
   { id: 'prep', label: 'Workbench', badge: 'Pipelines', color: '#FF9500', tint: 'rgba(255, 149, 0, 0.13)' },
@@ -71,9 +72,10 @@ export const PROFILE_DASHBOARDS = {
     heading: 'Direct Channels',
     tagline: 'Apple.com, Apple Store App, and first-party iOS & macOS search.',
     popularIds: {
+      dashboards: 'dir-dash-exec-search',
       data: 'dir-data-iphone-pro',
       analytics: 'dir-ana-conv-web',
-      prep: 'dir-prep-ingest-kafka',
+      prep: 'dir-prep-dmc-material',
     },
     updates: [
       {
@@ -124,6 +126,7 @@ export const PROFILE_DASHBOARDS = {
     heading: 'Indirect & Partners',
     tagline: 'Carrier portals, authorized resellers, and syndicated catalog feeds.',
     popularIds: {
+      dashboards: 'ind-dash-partner-car',
       data: 'ind-data-partner-car',
       analytics: 'ind-ana-attr-multi',
       prep: 'ind-prep-harm-sku',
@@ -177,6 +180,7 @@ export const PROFILE_DASHBOARDS = {
     heading: 'Outbound & Exports',
     tagline: 'Scheduled Parquet snapshots, REST/GraphQL payloads, and webhook delivery.',
     popularIds: {
+      dashboards: 'out-dash-ops-sla',
       data: 'out-data-snap-daily',
       analytics: 'out-ana-health-sla',
       prep: 'out-prep-stage-can',

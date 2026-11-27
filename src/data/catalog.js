@@ -1,13 +1,40 @@
 export const SIDEBAR_MODES = [
-  { id: 'data', label: 'Data' },
-  { id: 'analytics', label: 'Analytics' },
-  { id: 'prep', label: 'Workbench' },
+  {
+    id: 'dashboards',
+    label: 'Dashboards',
+    description: 'Built-in KPI boards & live monitors',
+  },
+  {
+    id: 'data',
+    label: 'Data',
+    description: 'BigQuery tables, filters, pivots & charts',
+  },
+  {
+    id: 'analytics',
+    label: 'Analytics',
+    description: 'Funnels, query trends & benchmarks',
+  },
+  {
+    id: 'prep',
+    label: 'Workbench',
+    description: 'Data prep templates & SAP DMC tools',
+  },
 ];
 
 export const PRODUCT_CATALOG = {
   home: {
     title: 'All',
     modes: {
+      dashboards: [
+        {
+          id: 'all-dash-exec',
+          name: 'Executive Overview',
+          items: [
+            { id: 'all-dash-exec-pulse', name: 'iSearch Global Pulse' },
+            { id: 'all-dash-exec-score', name: 'Quarterly Scorecard' },
+          ],
+        },
+      ],
       data: [
         {
           id: 'all-data-iphone',
@@ -108,6 +135,24 @@ export const PRODUCT_CATALOG = {
   iphone: {
     title: 'Dir',
     modes: {
+      dashboards: [
+        {
+          id: 'dir-dash-exec',
+          name: 'Executive Pulse',
+          items: [
+            { id: 'dir-dash-exec-search', name: 'Direct Search Exec' },
+            { id: 'dir-dash-exec-launch', name: 'Launch Week Monitor' },
+          ],
+        },
+        {
+          id: 'dir-dash-store',
+          name: 'Storefront Health',
+          items: [
+            { id: 'dir-dash-store-web', name: 'Apple.com Live' },
+            { id: 'dir-dash-store-app', name: 'Store App Pulse' },
+          ],
+        },
+      ],
       data: [
         {
           id: 'dir-data-iphone',
@@ -163,6 +208,14 @@ export const PRODUCT_CATALOG = {
       ],
       prep: [
         {
+          id: 'dir-prep-dmc',
+          name: 'SAP DMC Prep',
+          items: [
+            { id: 'dir-prep-dmc-material', name: 'Material Master' },
+            { id: 'dir-prep-dmc-pir', name: 'PIR & Quota' },
+          ],
+        },
+        {
           id: 'dir-prep-ingest',
           name: 'Direct Ingestion',
           items: [
@@ -192,6 +245,24 @@ export const PRODUCT_CATALOG = {
   imac: {
     title: 'Ind',
     modes: {
+      dashboards: [
+        {
+          id: 'ind-dash-partner',
+          name: 'Partner Overview',
+          items: [
+            { id: 'ind-dash-partner-car', name: 'Carrier Performance' },
+            { id: 'ind-dash-partner-res', name: 'Global Reseller Pulse' },
+          ],
+        },
+        {
+          id: 'ind-dash-mix',
+          name: 'Channel Mix',
+          items: [
+            { id: 'ind-dash-mix-comp', name: 'Direct vs Indirect' },
+            { id: 'ind-dash-mix-health', name: 'Regional Feed Health' },
+          ],
+        },
+      ],
       data: [
         {
           id: 'ind-data-partner',
@@ -275,6 +346,24 @@ export const PRODUCT_CATALOG = {
   ipod: {
     title: 'Out',
     modes: {
+      dashboards: [
+        {
+          id: 'out-dash-ops',
+          name: 'Operations',
+          items: [
+            { id: 'out-dash-ops-sla', name: 'Delivery SLA Board' },
+            { id: 'out-dash-ops-pipe', name: 'Export Pipeline Status' },
+          ],
+        },
+        {
+          id: 'out-dash-cons',
+          name: 'Consumption',
+          items: [
+            { id: 'out-dash-cons-team', name: 'Team Usage Board' },
+            { id: 'out-dash-cons-api', name: 'API Health Summary' },
+          ],
+        },
+      ],
       data: [
         {
           id: 'out-data-snap',

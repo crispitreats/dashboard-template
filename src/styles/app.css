@@ -484,10 +484,14 @@
   color: var(--color-accent);
 }
 
-/* 3-Way Icon Selection: Data / Analytics / Prep */
+/* 4-Way Icon Selection: Dashboards / Data / Analytics / Workbench */
+.sub-mode-wrap {
+  position: relative;
+}
+
 .sub-mode-selector {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 3px;
   padding: 3px;
   background-color: var(--color-canvas-bg);
@@ -495,7 +499,63 @@
   border-radius: 999px;
 }
 
+.sub-mode-tooltip {
+  position: absolute;
+  top: calc(100% + 7px);
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 4px 9px;
+  border-radius: 6px;
+  background-color: #1d1d1f;
+  color: #ffffff;
+  font-family: var(--font-heading);
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  white-space: nowrap;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  pointer-events: none;
+  z-index: 40;
+  animation: tooltipPop 110ms ease;
+}
+
+.sub-mode-btn:first-child .sub-mode-tooltip {
+  left: 0;
+  transform: none;
+  animation: tooltipPopEdge 110ms ease;
+}
+
+.sub-mode-btn:last-child .sub-mode-tooltip {
+  left: auto;
+  right: 0;
+  transform: none;
+  animation: tooltipPopEdge 110ms ease;
+}
+
+@keyframes tooltipPop {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -3px);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+}
+
+@keyframes tooltipPopEdge {
+  from {
+    opacity: 0;
+    transform: translateY(-3px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .sub-mode-btn {
+  position: relative;
   display: inline-flex;
   align-items: center;
   justify-content: center;

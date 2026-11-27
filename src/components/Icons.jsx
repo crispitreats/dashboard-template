@@ -175,6 +175,22 @@ export function CaretIcon({ expanded = false, size = 10 }) {
 }
 
 export function ModeProductIcon({ mode, size = 15 }) {
+  if (mode === 'dashboards') {
+    return (
+      <svg
+        width={size}
+        height={size}
+        viewBox="0 0 24 24"
+        fill="currentColor"
+        aria-hidden="true"
+      >
+        <rect x="3.5" y="3.5" width="7.5" height="9.5" rx="2" />
+        <rect x="13" y="3.5" width="7.5" height="5.5" rx="2" />
+        <rect x="3.5" y="15" width="7.5" height="5.5" rx="2" />
+        <rect x="13" y="11" width="7.5" height="9.5" rx="2" />
+      </svg>
+    );
+  }
   if (mode === 'data') {
     return (
       <svg
